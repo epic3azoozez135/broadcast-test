@@ -109,65 +109,11 @@ client.on("message", async message => {
             }
 });
 
-// ========================================== [ OTHER COMMANDS ] ====================================
 
 
-client.on("message", async message => {
-    if(message.content == prefix + "server") {
-        if(!message.channel.guild) return;
-            if(!message.member.hasPermission("MANAGE_GUILD")) {
-                return message.channel.send("ليس لديك الصلآحية الكآفية . :broken_heart:");
-            }
 
-                let server = new Discord.RichEmbed()
-                    .setAuthor(message.guild.name)
-                    .setColor("RANDOM")
-                    .setTitle("Server Info :hearts: :sparkles:")
-                    .setDescription(`Members :bust_in_silhouette: : ${message.guild.memberCount}\nOwner :crown: : ${message.guild.owner.user.username}\nServer ID :id: : ${message.guild.id}\nRoles :lock: : ${message.guild.roles.size}\nRegion :earth_africa: : ${message.guild.region.toUpperCase()}`);
 
-                    message.channel.sendEmbed(server);
 
-    }
-});
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "banned")) {
-        if(!message.guild) return;
-        message.guild.fetchBans()
-        .then(bans => {
-            let b = bans.size;
-            let bb = bans.map(a => `${a}`).join(" - ");
-            message.channel.send(`**\`${b}\` | ${bb}**`);
-        });
-    }
-});
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "invite")) {
-        let invite = new Discord.RichEmbed()
-            .setColor("RANDOM")
-            .setAuthor(message.author.username, message.author.displayAvatarURL)
-            .setThumbnail(message.author.avatarURL)
-            .setTitle("**Click Here To Invite The Bot To Your Server :sparkling_heart:**")
-            .setURL(`https://discordapp.com/oauth2/authorize?client_id=${client.user.id}&scope=bot&permissions=8`);
-            message.channel.sendEmbed(invite);
-    }
-});
-client.on("message", async message => {
-    if(message.content.startsWith(prefix + "help")) {
-        let help = new Discord.RichEmbed()
-            .setColor("RANDOM")
-            .setThumbnail(message.author.avatarURL)
-            .setDescription(`**__برودكاست بوت | Version 1.1__ 
-
-            برودكاست عادي : ${prefix}bc
-            دعوة البوت لسيرفرك : ${prefix}invite
-            معلومات عن السيرفر : ${prefix}server
-            برودكاست للأونلاين فقط : ${prefix}bco
-            يعرض لك عدد المتبندين من سيرفرك : ${prefix}banned
-            رابط سيرفر الدعم الفني : https://discord.gg/YEXcDXt 
-            **`);
-            message.channel.sendEmbed(help); // رابط السيرفر يعود الى سيرفر CODES .
-    }
-});
 
 
 
