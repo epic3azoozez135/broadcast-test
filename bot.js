@@ -169,8 +169,6 @@ client.on("message", async message => {
     }
 });
 
-// DONE BY MOORZ .
-// CODES - COPYRIGHT
 
 
-client.login("NTA5NDQ4NTg2MzEyOTQxNTg5.DuNNow.vJW3YAdlYJNbPTVTX3DqVOPCNqY");
+client.login(process.env.BOT_TOKEN);
